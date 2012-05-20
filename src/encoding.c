@@ -480,7 +480,7 @@ mrb_require_safe(mrb_value fname, int safe)
 static int
 load_encoding(const char *name)
 {
-    mrb_value enclib;// = mrb_sprintf("enc/%s.so", name);
+    mrb_value enclib = {0};// = mrb_sprintf("enc/%s.so", name);
     //mrb_value verbose;// = ruby_verbose;
     //mrb_value debug;// = ruby_debug;
     //mrb_value loaded;

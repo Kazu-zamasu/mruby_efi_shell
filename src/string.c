@@ -2200,7 +2200,7 @@ mrb_value
 mrb_str_new_frozen(mrb_state *mrb, mrb_value orig)
 {
   struct RClass* klass;
-  mrb_value str;
+  mrb_value str = {0};
 
   klass = mrb_obj_class(mrb, orig);
 

@@ -133,7 +133,7 @@ cleanup(mrb_state *mrb, struct _args *args)
 }
 
 int
-main(int argc, char **argv)
+mruby_main(int argc, char **argv)
 {
   mrb_state *mrb = mrb_open();
   int n = -1;

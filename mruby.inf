@@ -1,0 +1,104 @@
+## @file
+#   A simple, basic, application showing how the Hello application could be
+#   built using the "Standard C Libraries" from StdLib.
+#
+#  Copyright (c) 2010 - 2011, Intel Corporation. All rights reserved.<BR>
+#  This program and the accompanying materials
+#  are licensed and made available under the terms and conditions of the BSD License
+#  which accompanies this distribution. The full text of the license may be found at
+#  http://opensource.org/licenses/bsd-license.
+#
+#  THE PROGRAM IS DISTRIBUTED UNDER THE BSD LICENSE ON AN "AS IS" BASIS,
+#  WITHOUT WARRANTIES OR REPRESENTATIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED.
+##
+
+[Defines]
+  INF_VERSION                    = 0x00010006
+  BASE_NAME                      = mruby
+  FILE_GUID                      = a7c422ed-50ed-4a40-846b-ee4b6d92a0cb
+  MODULE_TYPE                    = UEFI_APPLICATION
+  VERSION_STRING                 = 0.1
+  ENTRY_POINT                    = ShellCEntryLib
+
+#
+#  VALID_ARCHITECTURES           = IA32 X64 IPF
+#
+
+[Sources]
+  mruby.c
+  src/array.c
+  src/ascii.c
+  src/cdump.c
+  src/class.c
+  src/codegen.c
+  src/compar.c
+  src/crc.c
+  src/dump.c
+  src/encoding.c
+  src/encoding.h
+  src/enum.c
+  src/error.c
+  src/error.h
+  src/etc.c
+  src/gc.c
+  src/gc.h
+  src/hash.c
+  src/init.c
+  src/init_ext.c
+  src/kernel.c
+  src/load.c
+#  src/math.c
+  src/name2ctype.h
+  src/node.h
+  src/numeric.c
+  src/object.c
+  src/oniguruma.h
+  src/opcode.h
+  src/pool.c
+  src/print.c
+  src/proc.c
+  src/range.c
+  src/re.c
+  src/re.h
+  src/regcomp.c
+  src/regenc.c
+  src/regenc.h
+  src/regerror.c
+  src/regex.h
+  src/regexec.c
+  src/regint.h
+  src/regparse.c
+  src/regparse.h
+  src/sprintf.c
+  src/st.c
+  src/st.h
+  src/state.c
+  src/string.c
+  src/struct.c
+  src/symbol.c
+  src/time.c
+  src/transcode.c
+  src/transcode_data.h
+  src/unicode.c
+  src/us_ascii.c
+  src/utf_8.c
+  src/variable.c
+  src/vm.c
+  src/y.tab.c
+  tools/mruby/mruby.c
+  mrblib/mrblib.c
+
+[Packages]
+  StdLib/StdLib.dec
+  MdePkg/MdePkg.dec
+  ShellPkg/ShellPkg.dec
+
+[LibraryClasses]
+  LibC
+  LibStdio
+  DevShell
+  LibMath
+
+
+[BuildOptions]
+  GCC:*_*_*_CC_FLAGS  = -I$(WORKSPACE)/AppPkg/Applications/mruby/include -I$(WORKSPACE)/AppPkg/Applications/mruby/src -Os

@@ -7,6 +7,9 @@
 #ifndef MRUBYCONF_H
 #define MRUBYCONF_H
 
+#define HAVE_LIMITS_H
+#define NO_GMTIME_R
+
 #include <stdint.h>
 #undef MRB_USE_FLOAT
 

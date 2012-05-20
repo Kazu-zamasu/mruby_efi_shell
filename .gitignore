@@ -15,9 +15,7 @@
 .svn
 /.git
 cscope.out
-/src/y.tab.c
 /bin
-/mrblib/mrblib.c
 /mrblib/*.*tmp
 /test/mrbtest
 /test/mrbtest.c

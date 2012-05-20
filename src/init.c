@@ -59,7 +59,7 @@ mrb_init_core(mrb_state *mrb)
   mrb_init_exception(mrb);
   mrb_init_print(mrb);
   mrb_init_time(mrb);
-  mrb_init_math(mrb);
+/*   mrb_init_math(mrb); */
 
   mrb_init_mrblib(mrb);
 
