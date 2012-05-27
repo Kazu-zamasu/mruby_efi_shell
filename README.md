@@ -1,3 +1,10 @@
+# **NOTICE**
+
+This is a sample mruby porting on EFI Shell.  
+Please refer to [**mruby\_on\_efi\_shell**](https://github.com/masamitsu-murase/mruby_on_efi_shell) to get the latest information.
+
+
+---------------------------------------------------------------
 # !!Notice!!
     This is a preliminary release for internal team review.
     The URLs and addresses described below are not available yet.
