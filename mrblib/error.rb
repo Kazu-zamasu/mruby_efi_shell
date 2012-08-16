@@ -55,6 +55,9 @@ end
 class ScriptError < Exception
 end
 
+class LoadError < ScriptError
+end
+
 # ISO 15.2.38
 class SyntaxError < ScriptError
 end
