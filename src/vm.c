@@ -802,6 +802,7 @@ mrb_run(mrb_state *mrb, struct RProc *proc, mrb_value self)
       mrb->stack += a;
 
       if (MRB_PROC_CFUNC_P(m)) {
+        ptrdiff_t cii = ci - mrb->cibase;
         if (n == CALL_MAXARGS) {
           ci->nregs = 3;
         }
@@ -809,6 +810,7 @@ mrb_run(mrb_state *mrb, struct RProc *proc, mrb_value self)
           ci->nregs = n + 2;
         }
         result = m->body.func(mrb, recv);
+        ci = mrb->cibase + cii;
         mrb->stack[0] = result;
         mrb->arena_idx = ai;
         if (mrb->exc) goto L_RAISE;
