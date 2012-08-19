@@ -587,7 +587,7 @@ root_scan_phase(mrb_state *mrb)
     mrb_gc_mark(mrb, (struct RBasic*)ci->target_class);
   }
   /* mark irep pool */
-  for (i=0; i<mrb->irep_len; i++) {
+  for (i=0; i<mrb->irep_len && i<mrb->irep_capa; i++) {
     if (mrb->irep) {
       mrb_irep *irep = mrb->irep[i];
       if (!irep) continue;
