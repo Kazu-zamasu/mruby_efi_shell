@@ -3,7 +3,9 @@
 *.dylib
 *.inc
 *.o
+*.obj
 *.a
+*.lib
 *.orig
 *.rej
 *.sav

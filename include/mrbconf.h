@@ -46,10 +46,10 @@
 //#define DISABLE_MATH		/* Math functions */
 //#define DISABLE_TIME		/* Time class */
 //#define DISABLE_STRUCT	/* Struct class */
-//#define DISABLE_STDIO		/* use of stdio */
+#define DISABLE_STDIO		/* use of stdio */
 
 #undef  HAVE_UNISTD_H /* WINDOWS */
-#define HAVE_UNISTD_H /* LINUX */
+//#define HAVE_UNISTD_H /* LINUX */
 
 /* end of configuration */
 

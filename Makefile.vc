@@ -1,0 +1,29 @@
+
+all:
+	cd src
+	$(MAKE) -f Makefile.vc
+	cd ..
+	cd tools\mrbc
+	$(MAKE) -f Makefile.vc
+	cd ..\..
+	cd mrblib
+	$(MAKE) -f Makefile.vc
+	cd ..
+	cd tools\mruby
+	$(MAKE) -f Makefile.vc
+	cd ..\..
+
+clean:
+	cd src
+	$(MAKE) -f Makefile.vc clean
+	cd ..
+	cd tools\mrbc
+	$(MAKE) -f Makefile.vc clean
+	cd ..\..
+	cd mrblib
+	$(MAKE) -f Makefile.vc clean
+	cd ..
+	cd tools\mruby
+	$(MAKE) -f Makefile.vc clean
+	cd ..\..
+

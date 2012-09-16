@@ -1,0 +1,26 @@
+
+CC = cl
+LINK = link
+LIBEXE = lib
+CFLAGS = /Ox /MT /I. /I..\include /DHAVE_STRING_H /DNO_GETTIMEOFDAY
+TARGET = ..\lib\libmrb.lib
+CTEMP = mrblib.ctmp
+RBTEMP = mrblib.rbtmp
+MRBC = ..\bin\mrbc.exe
+OBJ = mrblib.obj
+
+all: $(TARGET)
+
+$(TARGET): $(OBJ)
+	$(LIBEXE) $(OBJ) /OUT:$(TARGET)
+
+mrblib.c:
+	type *.rb > $(RBTEMP)
+	$(MRBC) -Bmrblib_irep -o$(CTEMP) $(RBTEMP)
+	type init_mrblib.c $(CTEMP) > mrblib.c
+
+.c.obj:
+	$(CC) $< /c /TC $(CFLAGS)
+
+clean:
+	del *.obj

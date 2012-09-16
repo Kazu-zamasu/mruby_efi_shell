@@ -1,0 +1,19 @@
+
+CC = cl
+LINK = link
+CFLAGS = /Ox /MT /I. /I..\..\include /DHAVE_STRING_H /DNO_GETTIMEOFDAY
+OBJS = mrbc.obj
+LIBS = ..\..\lib\libmruby.lib
+TARGET = ..\..\bin\mrbc.exe
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS) $(LIBS)
+	$(LINK) $(OBJS) /out:$(TARGET) $(LIBS)
+
+.c.obj:
+	$(CC) $< /c $(CFLAGS)
+
+clean:
+	del *.obj
+

@@ -1,0 +1,17 @@
+
+CC = cl
+LIBEXE = lib
+CFLAGS = /Ox /MT /I. /I..\include /DHAVE_STRING_H /DNO_GETTIMEOFDAY
+OBJS = array.obj cdump.obj class.obj codegen.obj compar.obj crc.obj dump.obj enum.obj error.obj etc.obj gc.obj hash.obj init.obj init_ext.obj kernel.obj load.obj math.obj numeric.obj object.obj pool.obj print.obj proc.obj range.obj re.obj regcomp.obj regenc.obj regerror.obj regexec.obj regparse.obj sprintf.obj st.obj state.obj string.obj struct.obj symbol.obj time.obj variable.obj vm.obj y.tab.obj
+TARGET = ..\lib\libmruby.lib
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(LIBEXE) $(OBJS) /OUT:$(TARGET)
+
+.c.obj:
+	$(CC) $< /c /TC $(CFLAGS)
+
+clean:
+	del *.obj
