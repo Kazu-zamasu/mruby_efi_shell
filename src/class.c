@@ -1742,6 +1742,12 @@ mrb_top_self_to_s(mrb_state *mrb, mrb_value top_self)
   return mrb_str_new(mrb, "main", 4);
 }
 
+static mrb_value
+mrb_top_self_include(mrb_state *mrb, mrb_value top_self)
+{
+  return mrb_mod_include(mrb, mrb_obj_value(mrb->object_class));
+}
+
 void
 mrb_init_class(mrb_state *mrb)
 {
@@ -1820,4 +1826,5 @@ mrb_init_class(mrb_state *mrb)
   mrb->top_self = (struct RObject*)mrb_obj_alloc(mrb, MRB_TT_OBJECT, obj);
   mrb_define_singleton_method(mrb, mrb->top_self, "to_s", mrb_top_self_to_s, ARGS_NONE());
   mrb_define_singleton_method(mrb, mrb->top_self, "inspect", mrb_top_self_to_s, ARGS_NONE());
+  mrb_define_singleton_method(mrb, mrb->top_self, "include", mrb_top_self_include, ARGS_ANY());
 }
