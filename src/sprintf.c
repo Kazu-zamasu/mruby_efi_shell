@@ -984,7 +984,7 @@ retry:
       case 'a':
       case 'A': {
         mrb_value val = GETARG();
-        double fval;
+        long double fval;
         int i, need = 6;
         char fbuf[32];
 

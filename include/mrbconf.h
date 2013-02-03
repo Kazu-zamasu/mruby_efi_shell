@@ -14,10 +14,10 @@
 //#define MRB_USE_FLOAT
 
 /* add -DMRB_INT64 to use 64bit integer for mrb_int */
-//#define MRB_INT64
+#define MRB_INT64
 
 /* represent mrb_value in boxed double; conflict with MRB_USE_FLOAT */
-//#define MRB_NAN_BOXING
+#define MRB_NAN_BOXING
 
 /* define on big endian machines; used by MRB_NAN_BOXING */
 //#define MRB_ENDIAN_BIG
@@ -64,14 +64,23 @@
 # define mrb_float_to_str(buf, i) sprintf((buf), "%.7e", (i))
 # define str_to_mrb_float(buf) (mrb_float)strtof((buf),NULL)
 #else
-  typedef double mrb_float;
-# define mrb_float_to_str(buf, i) sprintf((buf), "%.16e", (i))
-# define str_to_mrb_float(buf) (mrb_float)strtod((buf),NULL)
+  typedef long double mrb_float;
+# define mrb_float_to_str(buf, i) sprintf((buf), "%.16Le", (i))
+# define str_to_mrb_float(buf) (mrb_float)strtold((buf),NULL)
+//  typedef double mrb_float;
+//# define mrb_float_to_str(buf, i) sprintf((buf), "%.16e", (i))
+//# define str_to_mrb_float(buf) (mrb_float)strtod((buf),NULL)
 #endif
 
 #ifdef MRB_NAN_BOXING
 # ifdef MRB_INT64
-#  error Cannot use NaN boxing when mrb_int is 64bit
+   typedef int64_t mrb_int;
+#  define MRB_INT_MIN INT64_MIN
+#  define MRB_INT_MAX INT64_MAX
+#  define MRB_INT_FORMAT PRId64
+#  define mrb_int_to_str(buf, i) sprintf((buf), "%" MRB_INT_FORMAT, (i))
+#  define str_to_mrb_int(buf) (mrb_int)strtoll((buf), NULL, 10)
+//#  error Cannot use NaN boxing when mrb_int is 64bit
 # else
    typedef int32_t mrb_int;
 #  define MRB_INT_MIN INT32_MIN

@@ -111,21 +111,20 @@ typedef struct mrb_value {
   union {
     mrb_float f;
     struct {
-      MRB_ENDIAN_LOHI(
- 	uint32_t ttt;
-        ,union {
+        union {
 	  void *p;
 	  mrb_int i;
 	  mrb_sym sym;
 	} value;
-       )
+        uint32_t dummy;
+ 	uint32_t ttt;
     };
   };
 } mrb_value;
 
 #define mrb_tt(o)     ((o).ttt & 0xff)
-#define mrb_mktt(tt)  (0xfff00000|(tt))
-#define mrb_type(o)   ((uint32_t)0xfff00000 < (o).ttt ? mrb_tt(o) : MRB_TT_FLOAT)
+#define mrb_mktt(tt)  (0xffff0000|(tt))
+#define mrb_type(o)   ((uint32_t)0xffff0000 < (o).ttt ? mrb_tt(o) : MRB_TT_FLOAT)
 #define mrb_float(o)  (o).f
 
 #define MRB_SET_VALUE(o, tt, attr, v) do {\

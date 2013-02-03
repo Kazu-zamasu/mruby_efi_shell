@@ -30,7 +30,7 @@
 #define SET_SYM_VALUE(r,v) MRB_SET_VALUE(r, MRB_TT_SYMBOL, value.sym, (v))
 #define SET_OBJ_VALUE(r,v) MRB_SET_VALUE(r, (((struct RObject*)(v))->tt), value.p, (v))
 #ifdef MRB_NAN_BOXING
-#define SET_FLT_VALUE(r,v) r.f = (v)
+#define SET_FLT_VALUE(r,v) r = mrb_float_value(v)
 #else
 #define SET_FLT_VALUE(r,v) MRB_SET_VALUE(r, MRB_TT_FLOAT, value.f, (v))
 #endif
