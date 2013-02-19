@@ -10,7 +10,7 @@
 //#define REGEXP_CLASS "HsRegexp"
 #define REGEXP_CLASS "Regexp"
 #define REGEXP_FLAG_IGNORECASE  0x01
-#define REGEXP_FLAG_MULTILINE   0x02
+#define REGEXP_FLAG_MULTILINE   0x04
 
 #define REGEXP_CHAR_IGNORECASE  'i'
 #define REGEXP_CHAR_MULTILINE   'm'
